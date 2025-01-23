@@ -8,7 +8,7 @@ const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: {
-    template: `%s | Agape`,
+    template: `%s | HeyAgape`,
     default: APP_NAME,
   },
   description: APP_DESCRIPTION,
