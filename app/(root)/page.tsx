@@ -1,5 +1,5 @@
 import React from "react";
-import ProductList from "@/components/ui/shared/poduct/product-list";
+import ProductList from "@/components/shared/poduct/product-list";
 import { getLatestProducts } from "@/lib/actions/product.actions";
 
 const HomePage = async () => {
@@ -12,7 +12,7 @@ const HomePage = async () => {
         limit={4}
       />
     </div>
-    
+
   );
 };
 

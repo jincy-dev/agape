@@ -1,5 +1,5 @@
 import React from "react";
-import { Card, CardContent, CardHeader } from "../../card";
+import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import Link from "next/link";
 import Image from "next/image";
 import ProductPrice from "./product-price";
