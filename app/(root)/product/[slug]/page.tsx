@@ -2,10 +2,10 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import ProductPrice from "@/components/shared/poduct/product-price";
 import { getProductBySlug } from "@/lib/actions/product.actions";
-import { Badge } from "lucide-react";
 import { notFound } from "next/navigation";
 import React from "react";
 import ProductImages from "@/components/shared/poduct/product-images";
+import { Badge } from "@/components/ui/badge";
 
 const ProductDetailPage = async (props: {
   params: Promise<{ slug: string }>;
