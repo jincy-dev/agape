@@ -62,12 +62,11 @@ export const config = {
       if (token.sub) {
         session.user.id = token.sub;
       }
-
       session.user.role = token.role;
       session.user.name = token.name;
       //if there is an update, set the user name
-      if (trigger === "update") {
-        session.user.name = user.name;
+      if (trigger === "update" && token.name) {
+        session.user.name = token.name;
       }
 
       return session;
@@ -90,6 +89,10 @@ export const config = {
           })
         }
       }
+      if (session?.user.name && trigger === 'update') {
+        token.name = session.user.name;
+      }
+
       return token;
       }    
   },

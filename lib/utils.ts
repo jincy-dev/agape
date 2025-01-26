@@ -20,11 +20,12 @@ export function formatNumberWithDecimal(num: number): string {
 //eslint-disable-next-line @typescript-eslint/no-explicit-any
 export async function formatError(error: any) {
   if (error.name === "ZodError") {
-    const fieldError = Object.keys(error.errors).map(
-      (field) => error.errors[field].message
-    );
+    const fieldErrors = Object.keys(error.errors).map((field) => {
+    const message = error.errors[field].message;
+    return typeof message === 'string' ? message : JSON.stringify(message);
+  });
 
-    return fieldError.join(". ");
+    return fieldErrors.join(". ");
     //Handle zod error
   } else if (
     error.name === "PrismaClientKnownRequestError" &&
@@ -34,7 +35,7 @@ export async function formatError(error: any) {
     const field = error.meta?.target ? error.meta.target[0] : "Field";
     return `${
       field.charAt(0).toUpperCase() + field.slice(1)
-    } is already exists`;
+    } already exists`;
   } else {
     //handle other errors
     return typeof error.message === "string"

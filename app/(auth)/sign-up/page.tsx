@@ -12,7 +12,7 @@ import Link from "next/link";
 import React from "react";
 import { auth } from "@/auth";
 import { redirect } from "next/navigation";
-import CredentialsSignUpForm from "./credential-sign-up-form";
+import SignUpForm from "./sign-up-form";
 
 export const metadata: Metadata = {
   title: "Sign Up",
@@ -23,8 +23,8 @@ const signUpPage = async (props: {
     callbackUrl?: string;
   }>;
 }) => {
-  const {callbackUrl} = await props.searchParams;
-
+  const searchParams = await props.searchParams;
+  const {callbackUrl}= searchParams;
   const session = await auth();
 
   if (session) {
@@ -50,7 +50,7 @@ const signUpPage = async (props: {
         </CardHeader>
         <CardContent className="space-y-4">
           {/* {Sign up form} */}
-          <CredentialsSignUpForm/>
+          <SignUpForm/>
         </CardContent>
       </Card>
     </div>

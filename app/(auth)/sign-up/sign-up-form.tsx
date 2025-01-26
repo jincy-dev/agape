@@ -4,12 +4,12 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { signUpDefaultValues } from "@/lib/constants";
 import Link from "next/link";
-import React, { use, useActionState } from "react";
+import React, { useActionState } from "react";
 import { useFormStatus } from "react-dom";
 import { signUpUser } from "@/lib/actions/user.actions";
 import { useSearchParams } from "next/navigation";
 
-const CredentialsSignUpForm = () => {
+const SignUpForm = () => {
   const [data, action] = useActionState(signUpUser, {
     success: false,
     message: "",
@@ -81,11 +81,11 @@ const CredentialsSignUpForm = () => {
         )}
         <div className="text-sm text-center text-muted-foreground">
           Already have an account?{" "}
-          <Link href="/sign-in" target="_self" className="link">Sign In</Link>
+          <Link href={`/sign-in?callbackUrl=${callbackUrl}`} target="_self" className="link">Sign In</Link>
         </div>
       </div>
     </form>
   );
 };
 
-export default CredentialsSignUpForm;
+export default SignUpForm;
